@@ -7,6 +7,6 @@ module.exports = defineConfig({
 //   publicPath: ["/patiro-app"],
 // };
 
-module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/patiro-app/" : "/",
-};
+// module.exports = {
+//   publicPath: process.env.NODE_ENV === "production" ? "/patiro-app/" : "/",
+// };

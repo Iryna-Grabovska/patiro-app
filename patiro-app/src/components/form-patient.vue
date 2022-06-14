@@ -2,14 +2,16 @@
   <section>
     <div>
       <h3> Registration patient</h3>
-      <form class="input-feild"  v-on:submit.prevent="submitForm"
+      <form class="input-feild" 
+
+        v-on:submit.prevent="submitForm" 
       >
         <input
           class="search-input"
           type="text"
           placeholder="Name"
           v-model="form.name"
-
+          id="name"
         />
       
         <input
@@ -17,12 +19,14 @@
           v-model="form.address"
           placeholder="address"
           type="text"
+          id="address"
         />
         <input
           class="search-input"
           v-model="form.phoneNumber"
           placeholder="phone number"
-          type="tex"
+          type="text"
+          id="phoneNumber"
         
         />
         <br/>
@@ -30,25 +34,27 @@
           </div>
         <input
           class="search-input"
-          v-model="form.weight"
+          v-model="this.form.weight"
           placeholder="weight"
           type="number"
+          id="weight"
         />
         <input
           class="search-input"
-          v-model="form.height"
+          v-model="this.form.height"
           placeholder="height"
           type="number"
+          id="height"
         />
         <br/>
             <span> Status {{form.status.text}}</span>
-        <select v-model="form.status" >
+        <select v-model="form.status"  id="status">
     <option v-for="option in form.status" :value="option.value" :key="option.id">
       {{ option.text }}
     </option>
   </select>
   <br/>
-        <button class="btn-search" v-on:click="getData">Add patient</button>
+        <button class="btn-search" >Add patient</button>
       </form>
       
     </div>
@@ -62,18 +68,16 @@ import axios from "axios";
 export default {
 
   name: "PostPage",
- data() {
-
-    return {
+ data(){return {
+     
       form:{
+         patients:null,
       status: [
         { text: 'New', value: 0 },
         { text: 'Pending', value: 1 },
         { text: 'Disqualified', value: 2 },
         { text: 'Qualified', value: 3 }
       ],
-      title: "patient registration",
-      users: [],
       name: "",
       address: "",
       phoneNumber:"",
@@ -85,19 +89,18 @@ export default {
 
   methods: {
      submitForm(){
-      this.submitting = true;
-       axios
-        .post(`https://patiro-developer.azurewebsites.net/api/Member/${this.form.users}`,
-         this.form)
-                 .then((respons) => {
-                  console.log(respons);
-                 })
-                 .catch((error) => {
-                    console.log(error);
-                 }).finally(() => {
+    this.submitting = true;
+ 
+         axios.post(`https://patiro-developer.azurewebsites.net/api/Member/${this.id}`, this.form)
+                 .then((response) => 
+                  console.log(response)
+                 )
+                 .catch((error) => 
+                    console.log(error)
+                 ).finally(() => {
                     
-                 });
-
+                 }); 
+               
   }
 
 }

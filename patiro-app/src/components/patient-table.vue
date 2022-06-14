@@ -35,7 +35,7 @@ export default {
   props:{
     patients_data:{
       type: Object,
-      dedault(){
+      default(){
         return{}
       }  
     },  
@@ -50,6 +50,7 @@ export default {
 
   methods:{
     showPopupInfo(){
+     
       this.isPopUpVisible= true;
         axios
        .get(`https://patiro-developer.azurewebsites.net/api/Member/${this.patients_data.id}`)

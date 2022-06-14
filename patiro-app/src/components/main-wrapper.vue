@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-  <p>{{title}}</p>
+  <!-- <p>{{title}}</p> -->
   <list-patients />
   </div>
 </template>
